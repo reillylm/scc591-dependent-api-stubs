@@ -1,0 +1,19 @@
+
+apply plugin: "java"
+apply plugin: "maven-publish"
+
+task stubsJar(type: Jar) {
+    from "${project.projectDir}/stubs"
+    into "stubs"
+}
+
+publishing {
+    publications {
+        Stubs(MavenPublication) {
+            groupId 'com.example'
+            artifactId 'scc591-dependent-api-stubs'
+            version '0.0.1'
+            artifact stubsJar
+        }
+    }
+}
